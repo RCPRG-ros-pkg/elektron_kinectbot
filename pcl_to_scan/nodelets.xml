@@ -1,0 +1,14 @@
+<library path="lib/libpcl_to_scan">
+
+  <class name="pcl_to_scan/CloudThrottle" type="pcl_to_scan::CloudThrottle" base_class_type="nodelet::Nodelet">
+    <description>
+      Throttle point clouds
+    </description>
+  </class>
+  
+  <class name="pcl_to_scan/CloudToScan" type="pcl_to_scan::CloudToScan" base_class_type="nodelet::Nodelet">
+    <description>
+      A nodelet to convert a point cloud to a laser scan.
+    </description>
+  </class>
+</library>

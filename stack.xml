@@ -1,0 +1,13 @@
+<stack>
+  <description brief="elektron_kinectbot">KinectBot</description>
+  <author>Maintained by Maciej Stefanczyk</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/elektron_kinectbot</url>
+  <depend stack="common" /> <!-- nodelet -->
+  <depend stack="common_msgs" /> <!-- sensor_msgs, visualization_msgs -->
+  <depend stack="openni_kinect" /> <!-- openni_camera -->
+  <depend stack="perception_pcl" /> <!-- pcl_ros -->
+  <depend stack="ros" />
+
+</stack>
