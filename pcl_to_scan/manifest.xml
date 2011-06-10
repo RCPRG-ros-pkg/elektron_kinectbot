@@ -1,18 +1,26 @@
 <package>
   <description brief="pcl_to_scan">
 
-     pcl_to_scan
+     Pointcloud utilities to simulate laser readings. 
 
   </description>
+  
   <author>Maciej Stefanczyk</author>
+  
   <license>BSD</license>
+  
   <review status="unreviewed" notes=""/>
+  
   <url>http://ros.org/wiki/pcl_to_scan</url>
+  
   <depend package="nodelet"/>
   <depend package="sensor_msgs"/>
   <depend package="pcl_ros"/>
   <depend package="visualization_msgs"/>
   <depend package="openni_camera"/>
+  <depend package="tf"/>
+  <depend package="roscpp"/>
+  <depend package="rospy"/>
 
   <export>
     <nodelet plugin="${prefix}/nodelets.xml" />
