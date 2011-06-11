@@ -19,7 +19,7 @@ private:
 };
 
 ElektronTeleopJoy::ElektronTeleopJoy() :
-	linear_(1), angular_(2), a_scale_(1.0), l_scale_(1.0) {
+	linear_(1), angular_(0), a_scale_(1.0), l_scale_(1.0) {
 
 	nh_.param("axis_linear", linear_, linear_);
 	nh_.param("axis_angular", angular_, angular_);
