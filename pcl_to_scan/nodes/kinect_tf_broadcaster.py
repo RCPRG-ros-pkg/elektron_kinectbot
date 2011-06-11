@@ -8,7 +8,7 @@ import tf
 
 def handle_kinect_tilt(msg):
     br = tf.TransformBroadcaster()
-    #br.sendTransform((0, 0, 0), tf.transformations.quaternion_from_euler(0, msg.data * 3.14 / 180, 0), rospy.Time.now(), "/kinect_rotated_base", "/kinect_base")
+    br.sendTransform((0, 0, 0), tf.transformations.quaternion_from_euler(0, -msg.data * 3.14 / 180, 0), rospy.Time.now(), "/kinect_rotated_base", "/kinect_base")
     print msg.data
 
 if __name__ == '__main__':
@@ -16,7 +16,7 @@ if __name__ == '__main__':
     rospy.Subscriber('/cur_tilt_angle', std_msgs.msg.Float64, handle_kinect_tilt)
     #rospy.spin()
     while not rospy.is_shutdown():
-        #tf.TransformBroadcaster().sendTransform( (0, 0, 0.036), tf.transformations.quaternion_from_euler(0, 0, 0), rospy.Time.now(), "/kinect_rotated_base", "/openni_camera")
+        tf.TransformBroadcaster().sendTransform( (0, 0, 0.036), tf.transformations.quaternion_from_euler(0, 0, 0), rospy.Time.now(), "/openni_camera", "/kinect_rotated_base")
         tf.TransformBroadcaster().sendTransform( (0, -0.02, 0), tf.transformations.quaternion_from_euler(0, 0, 0), rospy.Time.now(), "/openni_depth_frame", "/openni_camera")
         tf.TransformBroadcaster().sendTransform( (0, -0.04, 0), tf.transformations.quaternion_from_euler(0, 0, 0), rospy.Time.now(), "/openni_rgb_frame", "/openni_camera")
         tf.TransformBroadcaster().sendTransform( (0, 0, 0), tf.transformations.quaternion_from_euler(-1.57, 0, -1.57), rospy.Time.now(), "/openni_depth_optical_frame", "/openni_depth_frame")

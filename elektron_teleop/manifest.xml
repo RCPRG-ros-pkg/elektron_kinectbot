@@ -1,0 +1,16 @@
+<package>
+  <description brief="elektron_teleop">
+
+     elektron_teleop
+
+  </description>
+  <author>Maciej Stefanczyk</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/elektron_teleop</url>
+  <depend package="roscpp"/>
+  <depend package="joy"/>
+
+</package>
+
+
