@@ -28,7 +28,7 @@ ElektronTeleopJoy::ElektronTeleopJoy() :
 
 	vel_pub_ = nh_.advertise<geometry_msgs::Twist> ("cmd_vel", 1);
 
-	joy_sub_ = nh_.subscribe<joy::Joy> ("joy", 10, &TeleopTurtle::joyCallback,
+	joy_sub_ = nh_.subscribe<joy::Joy> ("joy", 10, &ElektronTeleopJoy::joyCallback,
 			this);
 
 }
