@@ -16,6 +16,6 @@
 	<param name="scale_angular" value="0.23" type="double"/>
 	
 	<!-- At last - teleoperation node -->
-	<node pkg="elektron_teleop" type="elektro_teleop_joy" name="teleop"/>
+	<node pkg="elektron_teleop" type="elektron_teleop_joy" name="teleop"/>
 
 </launch>
