@@ -18,13 +18,11 @@ private:
 
 };
 
-ElektronTeleopJoy::ElektronTeleopJoy() :
-	linear_(1), angular_(0), a_scale_(1.0), l_scale_(0.23) {
-
-	nh_.param("axis_linear", linear_, linear_);
-	nh_.param("axis_angular", angular_, angular_);
-	nh_.param("scale_angular", a_scale_, a_scale_);
-	nh_.param("scale_linear", l_scale_, l_scale_);
+ElektronTeleopJoy::ElektronTeleopJoy() {
+	nh_.param("axis_linear", linear_, 1);
+	nh_.param("axis_angular", angular_, 0);
+	nh_.param("scale_angular", a_scale_, 1.0);
+	nh_.param("scale_linear", l_scale_, 0.23);
 
 	vel_pub_ = nh_.advertise<geometry_msgs::Twist> ("cmd_vel", 1);
 
