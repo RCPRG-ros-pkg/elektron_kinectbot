@@ -16,6 +16,8 @@
 #define KEYCODE_S_CAP 0x53
 #define KEYCODE_W_CAP 0x57
 
+#define KEYCODE_SPC 0x20
+
 class ElektronTeleopKeyboard {
 private:
 	geometry_msgs::Twist vel_;
@@ -79,6 +81,7 @@ void ElektronTeleopKeyboard::keyboardLoop() {
 	puts("Use 'WS' to forward/back");
 	puts("Use 'AD' to turn left/right");
 	puts("Press 'Shift' to run");
+	puts("Press 'Space' to stop");
 
 
 	for (;;) {
@@ -91,44 +94,49 @@ void ElektronTeleopKeyboard::keyboardLoop() {
 		switch (c) {
 		// Walking
 		case KEYCODE_W:
-			vel.linear.x = l_scale_ * walk_scale_;
+			vel_.linear.x = l_scale_ * walk_scale_;
 			dirty = true;
 			break;
 		case KEYCODE_S:
-			vel.linear.x = -l_scale_ * walk_scale_;
+			vel_.linear.x = -l_scale_ * walk_scale_;
 			dirty = true;
 			break;
 		case KEYCODE_A:
-			vel.angular.z = -a_scale_ * walk_scale_;
+			vel_.angular.z = -a_scale_ * walk_scale_;
 			dirty = true;
 			break;
 		case KEYCODE_D:
-			vel.angular.z = a_scale_ * walk_scale_;
+			vel_.angular.z = a_scale_ * walk_scale_;
 			dirty = true;
 			break;
 
 		// Running
 		case KEYCODE_W_CAP:
-			vel.linear.x = l_scale_;
+			vel_.linear.x = l_scale_;
 			dirty = true;
 			break;
 		case KEYCODE_S_CAP:
-			vel.linear.x = -l_scale_;
+			vel_.linear.x = -l_scale_;
 			dirty = true;
 			break;
 		case KEYCODE_A_CAP:
-			vel.angular.z = a_scale_;
+			vel_.angular.z = -a_scale_;
 			dirty = true;
 			break;
 		case KEYCODE_D_CAP:
-			vel.angular.z = -a_scale_;
+			vel_.angular.z = a_scale_;
 			dirty = true;
 			break;
 
+		// Stop on space
+		case KEYCODE_SPC:
+			vel_.linear.x = 0;
+			vel_.angular.z = 0;
+			dirty = true;
+			break;
 		}
 
 		if (dirty == true) {
-
 			vel_pub_.publish(vel_);
 		}
 
