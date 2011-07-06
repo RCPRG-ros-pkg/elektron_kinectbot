@@ -25,13 +25,13 @@
 
 	<node pkg="pcl_to_scan" type="kinect_tf_broadcaster.py" name="kinect_tf_broadcaster"/>
 
-	<node pkg="nodelet" type="nodelet" name="openni_camera" args="manager"/>
+	<node pkg="nodelet" type="nodelet" name="openni_camera" args="manager" output="screen"/>
 
 	<!-- throttling -->
 	<node pkg="nodelet" type="nodelet" name="pointcloud_throttle" args="load pcl_to_scan/CloudThrottle openni_camera">
 		<param name="max_rate" value="2"/>
 		<remap from="cloud_in" to="/camera/depth/points"/>
-		<remap from="cloud_out" to="cloud_transformed"/>
+		<remap from="cloud_out" to="cloud_throttled"/>
 	</node>	
 	
 	<!-- Run a passthrough filter to transform cloud -->
@@ -39,13 +39,19 @@
 		<remap from="~input" to="cloud_throttled" />
 		<remap from="~output" to="cloud_transformed" />
 		<param name="output_frame" value="/kinect_base"/>
+		<rosparam>
+filter_field_name: z
+filter_limit_min: 0.01
+filter_limit_max: 10
+filter_limit_negative: False
+</rosparam>
 	</node>
 	
 	<!-- fake laser -->
-	<node pkg="nodelet" type="nodelet" name="kinect_laser" args="load pcl_to_scan/CloudToScan openni_camera">
+	<node pkg="nodelet" type="nodelet" name="kinect_laser" args="load pcl_to_scan/CloudToScan openni_camera" output="screen">
 		<param name="output_frame_id" value="/kinect_base"/>
 		<remap from="cloud" to="cloud_transformed"/>
-		<param name="min_height" value="-0.3"/>
+		<param name="min_height" value="-0.35"/>
 		<param name="max_height" value="0.3"/>
 	</node>
 </launch>
