@@ -34,7 +34,7 @@ void laserCallback(const sensor_msgs::LaserScanConstPtr& msg)
   if (r > 100)
     r = 100;
 
-  vel.linear.x = (r+l)/1e3 * 2.0;
+  vel.linear.x = (r+l)/1e3;
 
 
   double turnrate = (r-l);
