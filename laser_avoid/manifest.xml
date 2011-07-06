@@ -1,0 +1,18 @@
+<package>
+  <description brief="laser_avoid">
+
+     laser_avoid
+
+  </description>
+  <author>Maciej Stefanczyk</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/laser_avoid</url>
+
+  <depend package="roscpp"/>
+  <depend package="sensor_msgs"/>
+  <depend package="geometry_msgs"/>
+  
+</package>
+
+

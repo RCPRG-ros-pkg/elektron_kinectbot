@@ -1,6 +1,11 @@
 <stack>
-  <description brief="elektron_kinectbot">KinectBot</description>
-  <author>Maintained by Maciej Stefanczyk</author>
+  <description brief="elektron_kinectbot">
+	Applications for Elektron mobile robot.
+  
+    Most of them utilizes Microsoft Kinect sensor, hence the name of stack.
+  </description>
+  
+  <author>Maciej Stefanczyk</author>
   <license>BSD</license>  
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/elektron_kinectbot</url>

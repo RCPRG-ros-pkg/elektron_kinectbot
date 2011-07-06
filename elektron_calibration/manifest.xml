@@ -1,0 +1,12 @@
+<package>
+  <description brief="elektron_calibration">
+
+     Applications to calibrate Elektron motion sensors (gyroscope and odometry).
+
+  </description>
+  <author>Maciej Stefańczyk</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/elektron_calibration</url>
+
+</package>

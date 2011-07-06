@@ -102,11 +102,11 @@ void ElektronTeleopKeyboard::keyboardLoop() {
 			dirty = true;
 			break;
 		case KEYCODE_A:
-			vel_.angular.z = -a_scale_ * walk_scale_;
+			vel_.angular.z = a_scale_ * walk_scale_;
 			dirty = true;
 			break;
 		case KEYCODE_D:
-			vel_.angular.z = a_scale_ * walk_scale_;
+			vel_.angular.z = -a_scale_ * walk_scale_;
 			dirty = true;
 			break;
 
@@ -120,11 +120,11 @@ void ElektronTeleopKeyboard::keyboardLoop() {
 			dirty = true;
 			break;
 		case KEYCODE_A_CAP:
-			vel_.angular.z = -a_scale_;
+			vel_.angular.z = a_scale_;
 			dirty = true;
 			break;
 		case KEYCODE_D_CAP:
-			vel_.angular.z = a_scale_;
+			vel_.angular.z = -a_scale_;
 			dirty = true;
 			break;
 
