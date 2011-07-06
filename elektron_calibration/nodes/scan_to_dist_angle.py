@@ -65,17 +65,17 @@ class ScanToDistAngle:
                 num += 1
             angle += d_angle
         angle=atan2((-sum_x*sum_y+num*sum_xy)/(num*sum_xx-sum_x*sum_x), 1)
-        res = ScanAngle()
+        res = ScanDistAngle()
         res.header = msg.header
         res.dist = 0
-        res.scan = angle
+        res.angle= angle
         self.pub.publish(res)
 
 
 
 def main():
     rospy.init_node('scan_to_dist_angle')
-    s = ScanToAngle()
+    s = ScanToDistAngle()
     rospy.spin()
 
 
