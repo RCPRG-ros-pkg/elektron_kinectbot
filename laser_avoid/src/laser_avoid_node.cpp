@@ -12,7 +12,7 @@ void laserCallback(const sensor_msgs::LaserScanConstPtr& msg)
 
   l_range = r_range = msg->range_max;
 
-  for(unsigned int i = 95; i<msg->ranges.size()-95; i++)
+  for(unsigned int i = 0; i<msg->ranges.size(); i++)
   {
     if(i<(msg->ranges.size()/2))
     {
@@ -26,22 +26,24 @@ void laserCallback(const sensor_msgs::LaserScanConstPtr& msg)
   }
 
 
-  double l = (1e5*r_range)/500-100;
-  double r = (1e5*l_range)/500-100;
+//  double l = (1e5*r_range)/500-100;
+//  double r = (1e5*l_range)/500-100;
+  double l = 75 * r_range - 50;
+  double r = 75 * l_range - 50;
 
-  if (l > 100)
-    l = 100;
-  if (r > 100)
-    r = 100;
+  if (l > 50)
+    l = 50;
+  if (r > 50)
+    r = 50;
 
   vel.linear.x = (r+l)/1e3;
 
 
   double turnrate = (r-l);
-  if(turnrate > 40.0)
-    turnrate = 40.0;
-  if(turnrate < -40.0)
-    turnrate = -40.0;
+  if(turnrate > 10.0)
+    turnrate = 10.0;
+  if(turnrate < -10.0)
+    turnrate = -10.0;
 
   vel.angular.z = -turnrate * M_PI/180.0;
 

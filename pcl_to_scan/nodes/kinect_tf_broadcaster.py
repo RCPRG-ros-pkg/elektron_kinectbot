@@ -21,4 +21,4 @@ if __name__ == '__main__':
         tf.TransformBroadcaster().sendTransform( (0, -0.04, 0), tf.transformations.quaternion_from_euler(0, 0, 0), rospy.Time.now(), "/openni_rgb_frame", "/openni_camera")
         tf.TransformBroadcaster().sendTransform( (0, 0, 0), tf.transformations.quaternion_from_euler(-1.57, 0, -1.57), rospy.Time.now(), "/openni_depth_optical_frame", "/openni_depth_frame")
         tf.TransformBroadcaster().sendTransform( (0, 0, 0), tf.transformations.quaternion_from_euler(-1.57, 0, -1.57), rospy.Time.now(), "/openni_rgb_optical_frame", "/openni_rgb_frame")
-        rospy.sleep(0.01)
+        rospy.sleep(0.05)

@@ -75,8 +75,8 @@ private:
     //Copy Header
     output->header = cloud->header;
     output->header.frame_id = output_frame_id_;
-    output->angle_min = -M_PI/2;
-    output->angle_max = M_PI/2;
+    output->angle_min = -M_PI/6;
+    output->angle_max = M_PI/6;
     output->angle_increment = M_PI/180.0/2.0;
     output->time_increment = 0.0;
     output->scan_time = 1.0/30.0;
