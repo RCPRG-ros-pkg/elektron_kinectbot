@@ -1,0 +1,17 @@
+<package>
+  <description brief="elektron_navigation">
+
+     elektron_navigation
+
+  </description>
+  <author>Maciej Stefanczyk</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/elektron_navigation</url>
+  <depend package="move_base"/>
+  <depend package="gmapping"/>
+  <depend package="elektron_bringup"/>
+
+</package>
+
+
