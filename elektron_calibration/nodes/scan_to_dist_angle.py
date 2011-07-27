@@ -53,6 +53,7 @@ class ScanToDistAngle:
         sum_y = 0
         sum_xx = 0
         sum_xy = 0
+        sum_r = 0
         num = 0
         for r in msg.ranges:
             if angle > self.min_angle and angle < self.max_angle:
@@ -67,7 +68,7 @@ class ScanToDistAngle:
         angle=atan2((-sum_x*sum_y+num*sum_xy)/(num*sum_xx-sum_x*sum_x), 1)
         res = ScanDistAngle()
         res.header = msg.header
-        res.dist = 0
+        res.dist = sum_y / num
         res.angle= angle
         self.pub.publish(res)
 
