@@ -17,6 +17,6 @@ TrajectoryPlannerROS:
   latch_xy_goal_tolerance: true
   
   vx_samples: 8
-  controller_frequency: 10
+  controller_frequency: 5
 
   
