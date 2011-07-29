@@ -1,7 +1,7 @@
 <launch>
 	<!-- kinect and frame ids -->
 	
-	<node pkg="nodelet" type="nodelet" name="passthrough" args="load openni_camera/OpenNINodelet" output="screen">
+	<node pkg="nodelet" type="nodelet" name="openni_node1" args="load openni_camera/OpenNINodelet" output="screen">
 	<!--<node pkg="openni_camera" type="openni_node" name="openni_node1" output="screen" launch-prefix="$(arg launch_prefix)">-->
 	    <!--param name="topic" value="first" /-->
 	    <!--param name="device_id" value="2@3" --> <!-- this line uses device on usb bus 2 and addres 3 -->
