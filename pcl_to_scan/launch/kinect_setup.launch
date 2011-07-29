@@ -1,0 +1,3 @@
+<launch>
+	<node pkg="kinect_aux" type="kinect_aux_node" name="kinect_aux_node"/>
+</launch>

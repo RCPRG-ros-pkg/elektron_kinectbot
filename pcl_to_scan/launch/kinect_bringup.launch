@@ -17,13 +17,11 @@
 	    <param name="use_indices" value="false" />
 	    <param name="depth_registration" value="false" />
 	    <param name="image_mode" value="5" />
-	    <param name="depth_mode" value="5" />
-	    <param name="debayering" value="2" />
+	    <param name="depth_mode" value="8" />
+	    <param name="debayering" value="0" />
 	    <param name="depth_time_offset" value="0" />
 	    <param name="image_time_offset" value="0" />
 	</node>
-
-	<node pkg="kinect_aux" type="kinect_aux_node" name="kinect_aux_node"/>
 
 	<node pkg="pcl_to_scan" type="kinect_tf_broadcaster.py" name="kinect_tf_broadcaster"/>
 
