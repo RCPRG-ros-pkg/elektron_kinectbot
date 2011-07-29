@@ -6,7 +6,15 @@ import std_msgs
 
 import tf
 
+cnt = 0
+
 def handle_kinect_tilt(msg):
+    global cnt
+    cnt += 1
+    if (cnt < 100):
+        return
+    
+    cnt = 0
     br = tf.TransformBroadcaster()
     br.sendTransform((0, 0, 0), tf.transformations.quaternion_from_euler(0, -msg.data * 3.14 / 180, 0), rospy.Time.now(), "/kinect_rotated_base", "/kinect_base")
     print msg.data
