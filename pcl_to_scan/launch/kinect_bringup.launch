@@ -1,4 +1,7 @@
 <launch>
+
+	<node pkg="nodelet" type="nodelet" name="openni_camera" args="manager" output="screen"/>
+
 	<!-- kinect and frame ids -->
 	
 	<node pkg="nodelet" type="nodelet" name="openni_node1" args="load openni_camera/OpenNINodelet" output="screen">
@@ -24,7 +27,6 @@
 
 	<node pkg="pcl_to_scan" type="kinect_tf_broadcaster.py" name="kinect_tf_broadcaster"/>
 
-	<node pkg="nodelet" type="nodelet" name="openni_camera" args="manager" output="screen"/>
 
 	<!-- throttling -->
 	<node pkg="nodelet" type="nodelet" name="pointcloud_throttle" args="load pcl_to_scan/CloudThrottle openni_camera">
