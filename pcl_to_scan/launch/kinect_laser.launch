@@ -2,7 +2,10 @@
 	<!-- fake laser -->
 	<node pkg="nodelet" type="nodelet" name="kinect_laser" args="load pcl_to_scan/CloudToScan openni_camera" output="screen">
 		<param name="output_frame_id" value="/kinect_base"/>
+		
 		<remap from="cloud" to="cloud_transformed"/>
+		<remap from="scan" to="scan2"/>
+		
 		<param name="min_height" value="-0.5"/>
 		<param name="max_height" value="-0.4"/>
 	</node>
