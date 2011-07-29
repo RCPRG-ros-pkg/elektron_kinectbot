@@ -23,5 +23,5 @@ if __name__ == '__main__':
         tf.TransformBroadcaster().sendTransform( (0, 0, 0),     angle_1, stamp, "/openni_depth_optical_frame", "/openni_depth_frame")
         tf.TransformBroadcaster().sendTransform( (0, 0, 0),     angle_1, stamp, "/openni_rgb_optical_frame", "/openni_rgb_frame")
         tf.TransformBroadcaster().sendTransform( (0, 0, 0),     angle_2, stamp, "/kinect_rotated_base", "/kinect_base")
-        tf.TransformBroadcaster().sendTransform( (0, 0, 0.35),  angle_0, stamp, "/kinect_base", "/base_link")
+        tf.TransformBroadcaster().sendTransform( (0.023, 0, 0.35),  angle_0, stamp, "/kinect_base", "/base_link")
         rospy.sleep(0.2)
