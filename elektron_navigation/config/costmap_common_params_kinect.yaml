@@ -5,6 +5,8 @@ footprint: [[0.25, 0.18], [0.25, -0.18], [-0.25, -0.28], [-0.25, 0.18]]
 #robot_radius: ir_of_robot
 inflation_radius: 0.70
 
+map_type: voxel
+
 observation_sources: point_cloud_sensor
 
 #laser_scan_sensor: {sensor_frame: base_laser_link, data_type: LaserScan, topic: scan, marking: true, clearing: true}
