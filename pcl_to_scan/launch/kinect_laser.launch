@@ -3,7 +3,7 @@
 	<node pkg="nodelet" type="nodelet" name="kinect_laser" args="load pcl_to_scan/CloudToScan openni_camera" output="screen">
 		<param name="output_frame_id" value="/kinect_base"/>
 		<remap from="cloud" to="cloud_transformed"/>
-		<param name="min_height" value="-0.1"/>
-		<param name="max_height" value="0.1"/>
+		<param name="min_height" value="-0.5"/>
+		<param name="max_height" value="-0.4"/>
 	</node>
 </launch>
