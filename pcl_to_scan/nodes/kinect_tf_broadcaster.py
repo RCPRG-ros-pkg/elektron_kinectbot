@@ -14,6 +14,7 @@ if __name__ == '__main__':
     roll = rospy.get_param("~roll", 0.0)
     pitch = rospy.get_param("~pitch", 0.0)
     params = { 'roll' : roll, 'pitch': pitch } 
+    config = client.update_configuration(params)
     print "R: %f P: %f" % (roll, pitch)
     #rospy.Subscriber('/cur_tilt_angle', std_msgs.msg.Float64, handle_kinect_tilt)
     #rospy.spin()
@@ -21,7 +22,6 @@ if __name__ == '__main__':
     angle_1 = tf.transformations.quaternion_from_euler(-1.57, 0, -1.57)
     angle_2 = tf.transformations.quaternion_from_euler(-roll, -pitch, 0)
     while not rospy.is_shutdown():
-        config = client.update_configuration(params)
         roll = params['roll']
         pitch = params['pitch']
         angle_2 = tf.transformations.quaternion_from_euler(-roll, -pitch, 0)
