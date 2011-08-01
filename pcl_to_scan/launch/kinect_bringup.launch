@@ -24,8 +24,8 @@
 	</node>
 
 	<node pkg="pcl_to_scan" type="kinect_tf_broadcaster.py" name="kinect_tf_broadcaster">
-		<param name="pitch"  value="-0.347985"/>
-		<param name="roll"  value="-0.062852"/>
+		<param name="pitch"  value="-0.362906"/>
+		<param name="roll"  value="-0.062684"/>
 	</node>
 
 	<!-- throttling -->
