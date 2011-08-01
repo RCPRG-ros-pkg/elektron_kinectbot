@@ -11,7 +11,7 @@ if __name__ == '__main__':
     
     roll = rospy.get_param("~roll", 0.0)
     pitch = rospy.get_param("~pitch", 0.0) 
-    
+    print "R: %f P: %f" % (roll, pitch)
     #rospy.Subscriber('/cur_tilt_angle', std_msgs.msg.Float64, handle_kinect_tilt)
     #rospy.spin()
     angle_0 = tf.transformations.quaternion_from_euler(0, 0, 0)
