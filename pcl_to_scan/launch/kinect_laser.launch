@@ -6,7 +6,7 @@
 		<remap from="cloud" to="cloud_transformed"/>
 		<remap from="scan" to="scan2"/>
 		
-		<param name="min_height" value="-0.25"/>
-		<param name="max_height" value=" -0.15"/>
+		<param name="min_height" value="0.03"/>
+		<param name="max_height" value=" 0.45"/>
 	</node>
 </launch>

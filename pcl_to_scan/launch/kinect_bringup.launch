@@ -37,7 +37,7 @@
 	<node pkg="nodelet" type="nodelet" name="passthrough" args="load pcl/PassThrough openni_camera" output="screen">
 		<remap from="~input" to="cloud_throttled" />
 		<remap from="~output" to="cloud_transformed" />
-		<param name="output_frame" value="/kinect_base"/>
+		<param name="output_frame" value="/base_footprint"/>
 		<rosparam>
 filter_field_name: z
 filter_limit_min: 0.01
