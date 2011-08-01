@@ -3,14 +3,17 @@ import roslib
 roslib.load_manifest('pcl_to_scan')
 import rospy
 import std_msgs
+import dynamic_reconfigure.client
 
 import tf
 
 if __name__ == '__main__':
     rospy.init_node('kinect_tf_broadcaster')
+    client = dynamic_reconfigure.client.Client('kinect_tf_broadcaster')
     
     roll = rospy.get_param("~roll", 0.0)
-    pitch = rospy.get_param("~pitch", 0.0) 
+    pitch = rospy.get_param("~pitch", 0.0)
+    params = { 'roll' : roll, 'pitch': pitch } 
     print "R: %f P: %f" % (roll, pitch)
     #rospy.Subscriber('/cur_tilt_angle', std_msgs.msg.Float64, handle_kinect_tilt)
     #rospy.spin()
@@ -18,6 +21,11 @@ if __name__ == '__main__':
     angle_1 = tf.transformations.quaternion_from_euler(-1.57, 0, -1.57)
     angle_2 = tf.transformations.quaternion_from_euler(-roll, -pitch, 0)
     while not rospy.is_shutdown():
+        config = client.update_configuration(params)
+        roll = params['roll']
+        pitch = params['pitch']
+        angle_2 = tf.transformations.quaternion_from_euler(-roll, -pitch, 0)
+        
         stamp = rospy.Time.now() + rospy.Duration(0.3)
         tf.TransformBroadcaster().sendTransform( (0, 0, 0.036), angle_0, stamp, "/openni_camera", "/kinect_rotated_base")
         tf.TransformBroadcaster().sendTransform( (0, -0.02, 0), angle_0, stamp, "/openni_depth_frame", "/openni_camera")
