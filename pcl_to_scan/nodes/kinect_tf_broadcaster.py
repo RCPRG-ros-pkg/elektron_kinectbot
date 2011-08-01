@@ -16,7 +16,7 @@ if __name__ == '__main__':
     #rospy.spin()
     angle_0 = tf.transformations.quaternion_from_euler(0, 0, 0)
     angle_1 = tf.transformations.quaternion_from_euler(-1.57, 0, -1.57)
-    angle_2 = tf.transformations.quaternion_from_euler(roll, pitch, 0)
+    angle_2 = tf.transformations.quaternion_from_euler(roll, -pitch, 0)
     while not rospy.is_shutdown():
         stamp = rospy.Time.now() + rospy.Duration(0.3)
         tf.TransformBroadcaster().sendTransform( (0, 0, 0.036), angle_0, stamp, "/openni_camera", "/kinect_rotated_base")
