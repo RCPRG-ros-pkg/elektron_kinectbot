@@ -126,11 +126,8 @@ private:
         NODELET_DEBUG("rejected for nan in point(%f, %f, %f)\n", x, y, z);
         continue;  
       }
-<<<<<<< Updated upstream
+
       if (z > max_height_ || z < min_height_)
-=======
-      if (y > max_height_ || y < min_height_)
->>>>>>> Stashed changes
       {
         NODELET_DEBUG("rejected for height %f not in range (%f, %f)\n", z, min_height_, max_height_);
         continue;

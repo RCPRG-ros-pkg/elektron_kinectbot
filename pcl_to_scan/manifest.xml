@@ -21,6 +21,7 @@
   <depend package="tf"/>
   <depend package="roscpp"/>
   <depend package="rospy"/>
+  <depend package="dynamic_reconfigure"/>
 
   <export>
     <nodelet plugin="${prefix}/nodelets.xml" />
