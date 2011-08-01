@@ -6,15 +6,17 @@ import std_msgs
 
 import tf
 
-angle = -20.0
-
 if __name__ == '__main__':
     rospy.init_node('kinect_tf_broadcaster')
+    
+    roll = rospy.get_param("~roll", 0.0)
+    pitch = rospy.get_param("~pitch", 0.0) 
+    
     #rospy.Subscriber('/cur_tilt_angle', std_msgs.msg.Float64, handle_kinect_tilt)
     #rospy.spin()
     angle_0 = tf.transformations.quaternion_from_euler(0, 0, 0)
     angle_1 = tf.transformations.quaternion_from_euler(-1.57, 0, -1.57)
-    angle_2 = tf.transformations.quaternion_from_euler(0, -angle * 3.14 / 180, 0)
+    angle_2 = tf.transformations.quaternion_from_euler(roll, pitch, 0)
     while not rospy.is_shutdown():
         stamp = rospy.Time.now() + rospy.Duration(0.3)
         tf.TransformBroadcaster().sendTransform( (0, 0, 0.036), angle_0, stamp, "/openni_camera", "/kinect_rotated_base")

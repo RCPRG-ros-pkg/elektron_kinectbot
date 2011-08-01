@@ -23,8 +23,10 @@
 	    <param name="image_time_offset" value="0" />
 	</node>
 
-	<node pkg="pcl_to_scan" type="kinect_tf_broadcaster.py" name="kinect_tf_broadcaster"/>
-
+	<node pkg="pcl_to_scan" type="kinect_tf_broadcaster.py" name="kinect_tf_broadcaster">
+		<param name="pitch" type="float" value="-0.347985"/>
+		<param name="roll" type="float" value="-0.062852"/>
+	</node>
 
 	<!-- throttling -->
 	<node pkg="nodelet" type="nodelet" name="pointcloud_throttle" args="load pcl_to_scan/CloudThrottle openni_camera">
