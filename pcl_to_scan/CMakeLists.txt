@@ -33,4 +33,7 @@ gencfg()
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 
+include_directories (include)
+include_directories (cfg/cpp)
+
 rosbuild_add_library(pcl_to_scan src/cloud_to_scan.cpp src/cloud_throttle.cpp)
