@@ -85,8 +85,8 @@ private:
 
 
 		cb = boost::bind(&CloudToScan::configCallback, this, _1, _2);
-		dr_srv.updateConfig(config);
-		dr_srv.setCallback(cb);
+		dr_srv->updateConfig(config);
+		dr_srv->setCallback(cb);
 	}
 
 
