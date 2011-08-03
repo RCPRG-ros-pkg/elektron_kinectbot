@@ -81,10 +81,6 @@ private:
 		config.min_height = min_height_;
 
 		// Set up a dynamic reconfigure server.
-		dynamic_reconfigure::Server < pcl_to_scan::cloud_to_scan_paramsConfig
-				> dr_srv;
-		dynamic_reconfigure::Server<pcl_to_scan::cloud_to_scan_paramsConfig>::CallbackType
-				cb;
 		cb = boost::bind(&CloudToScan::configCallback, this, _1, _2);
 		dr_srv.updateConfig(config);
 		dr_srv.setCallback(cb);
@@ -231,6 +227,9 @@ private:
 	ros::Publisher pub_;
 	ros::Subscriber sub_;
 	ros::Publisher marker_pub;
+
+	dynamic_reconfigure::Server < pcl_to_scan::cloud_to_scan_paramsConfig > dr_srv;
+	dynamic_reconfigure::Server<pcl_to_scan::cloud_to_scan_paramsConfig>::CallbackType cb;
 };
 
 PLUGINLIB_DECLARE_CLASS(pcl_to_scan, CloudToScan, pcl_to_scan::CloudToScan, nodelet::Nodelet);
