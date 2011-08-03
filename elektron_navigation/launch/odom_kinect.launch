@@ -5,8 +5,10 @@
 	<node name="map_server" pkg="map_server" type="map_server" args="$(find elektron_navigation)/maps/map_5cm.pgm 0.05"/>
 
 	<!--- Run fake localization (use odom frame) -->
-	<node name="fake_local" pkg="fake_localization" type="fake_localization"/>
-
+	<node name="fake_local" pkg="fake_localization" type="fake_localization">
+		<remap from="base_pose_ground_truth" to="/robot_pose_ekf/odom"/>
+	</node>
+	
 	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
 		<rosparam file="$(find elektron_navigation)/config/costmap_common_params_kinect.yaml" command="load" ns="global_costmap" />
 		<rosparam file="$(find elektron_navigation)/config/costmap_common_params_kinect.yaml" command="load" ns="local_costmap" />
