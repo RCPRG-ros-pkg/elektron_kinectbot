@@ -13,8 +13,8 @@ import tf
 
 class kinect_tf_broadcaster():
     def __init__(self):
-        roll = rospy.get_param("~roll", 0.0)
-        pitch = rospy.get_param("~pitch", 0.0)
+        self.roll = rospy.get_param("~roll", 0.0)
+        self.pitch = rospy.get_param("~pitch", 0.0)
         
         self.server = DynamicReconfigureServer(Params, self.reconfigure)
         
@@ -23,7 +23,7 @@ class kinect_tf_broadcaster():
         #rospy.spin()
         self.angle_0 = tf.transformations.quaternion_from_euler(0, 0, 0)
         self.angle_1 = tf.transformations.quaternion_from_euler(-1.57, 0, -1.57)
-        self.angle_2 = tf.transformations.quaternion_from_euler(-roll, -pitch, 0)
+        self.angle_2 = tf.transformations.quaternion_from_euler(-self.roll, -self.pitch, 0)
         while not rospy.is_shutdown():
             stamp = rospy.Time.now() + rospy.Duration(0.3)
             tf.TransformBroadcaster().sendTransform( (0, 0, 0.036), self.angle_0, stamp, "/openni_camera", "/kinect_rotated_base")
@@ -40,7 +40,7 @@ class kinect_tf_broadcaster():
         # Fill in local variables with values received from dynamic reconfigure clients (typically the GUI).
         self.roll = config["roll"]
         self.pitch = config["pitch"]
-        self.angle_2 = tf.transformations.quaternion_from_euler(-roll, -pitch, 0)
+        self.angle_2 = tf.transformations.quaternion_from_euler(-self.roll, -self.pitch, 0)
         # Return the new variables.
         return config
 
