@@ -54,7 +54,6 @@ public:
 		min_height_(0.10), max_height_(0.15), u_min_(100), u_max_(150),
 				output_frame_id_("/openi_depth_frame") {
 	}
-	;
 
 private:
 	virtual void onInit() {
@@ -77,25 +76,22 @@ private:
 		marker_pub = nh.advertise<visualization_msgs::Marker> (
 				"visualization_marker", 10);
 
+		pcl_to_scan::cloud_to_scan_paramsConfig config;
+		config.max_height = max_height_;
+		config.min_height = min_height_;
+
 		// Set up a dynamic reconfigure server.
 		dynamic_reconfigure::Server < pcl_to_scan::cloud_to_scan_paramsConfig
 				> dr_srv;
 		dynamic_reconfigure::Server<pcl_to_scan::cloud_to_scan_paramsConfig>::CallbackType
 				cb;
 		cb = boost::bind(&CloudToScan::configCallback, this, _1, _2);
+		dr_srv.updateConfig(config);
 		dr_srv.setCallback(cb);
 	}
 
 
 	void configCallback(pcl_to_scan::cloud_to_scan_paramsConfig &config, uint32_t level) {
-		// Check, if it's first callback, if so - set default variables
-		if (!dynamic_set) {
-			config.min_height = min_height_;
-			config.max_height = max_height_;
-			dynamic_set = true;
-			return;
-		}
-
 		// Set class variables to new values. They should match what is input at the dynamic reconfigure GUI.
 		min_height_ = config.min_height;
 		max_height_ = config.max_height;
