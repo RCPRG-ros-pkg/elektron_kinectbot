@@ -1,0 +1,5 @@
+*/bin/*
+*/build/*
+*/lib/*
+*.cfgc
+*/cfg/cpp
