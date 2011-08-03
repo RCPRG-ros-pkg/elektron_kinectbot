@@ -18,7 +18,7 @@ class kinect_tf_broadcaster():
         
         self.server = DynamicReconfigureServer(Params, self.reconfigure)
         
-        print "R: %f P: %f" % (roll, pitch)
+        #print "R: %f P: %f" % (roll, pitch)
         #rospy.Subscriber('/cur_tilt_angle', std_msgs.msg.Float64, handle_kinect_tilt)
         #rospy.spin()
         self.angle_0 = tf.transformations.quaternion_from_euler(0, 0, 0)
