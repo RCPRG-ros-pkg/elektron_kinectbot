@@ -6,7 +6,7 @@
 
 	<!--- Run fake localization (use odom frame) -->
 	<node name="fake_local" pkg="fake_localization" type="fake_localization">
-		<remap from="base_pose_ground_truth" to="/robot_pose_ekf/odom"/>
+		<remap from="base_pose_ground_truth" to="/odom"/>
 	</node>
 	
 	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
