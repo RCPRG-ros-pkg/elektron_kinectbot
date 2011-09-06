@@ -46,7 +46,7 @@ class HoleDetector: public nodelet::Nodelet {
 public:
 	//Constructor
 	HoleDetector() :
-		min_height_(0.0) {
+		threshold_(0.0) {
 	}
 
 private:
@@ -55,7 +55,7 @@ private:
 		ros::NodeHandle& private_nh = getPrivateNodeHandle();
 
 
-		private_nh.getParam("min_height", min_height_);
+		private_nh.getParam("threshold", threshold_);
 
 		pub_ = nh.advertise<PointCloud> ("output", 10);
 		sub_ = nh.subscribe<PointCloud> ("input", 10, &HoleDetector::callback, this);
@@ -69,13 +69,14 @@ private:
 		output->width = msg->width;
 
 		BOOST_FOREACH (const pcl::PointXYZ& pt, msg->points) {
-			output->points.push_back (pt);
+			if (pt.z < threshold_)
+				output->points.push_back (pt);
 		}
 
 		pub_.publish(output);
 	}
 
-	double min_height_;
+	double threshold_;
 
 	ros::Publisher pub_;
 	ros::Subscriber sub_;
