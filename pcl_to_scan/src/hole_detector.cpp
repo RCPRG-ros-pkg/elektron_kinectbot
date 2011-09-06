@@ -46,7 +46,7 @@ class HoleDetector: public nodelet::Nodelet {
 public:
 	//Constructor
 	HoleDetector() :
-		threshold_(0.0) {
+		threshold_(0.0), h_(0.4) {
 	}
 
 private:
@@ -69,8 +69,15 @@ private:
 		output->width = msg->width;
 
 		BOOST_FOREACH (pcl::PointXYZ pt, msg->points) {
-			if (pt.z > threshold_)
+			float vx, vy, vz, sc;
+			if (pt.z > threshold_) {
 				pt.x = pt.y = pt.z = 10.0;
+			} else {
+				sc = h_ / (h_ - pt.z);
+				pt.x = pt.x * sc;
+				pt.y = pt.y * sc;
+				pt.z = 0.1;
+			}
 
 			output->points.push_back (pt);
 		}
@@ -79,6 +86,7 @@ private:
 	}
 
 	double threshold_;
+	double h_;
 
 	ros::Publisher pub_;
 	ros::Subscriber sub_;
