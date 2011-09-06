@@ -71,7 +71,7 @@ private:
 		BOOST_FOREACH (pcl::PointXYZ pt, msg->points) {
 			float vx, vy, vz, sc;
 			if (pt.z > threshold_) {
-				pt.x = pt.y = pt.z = 10.0;
+
 			} else {
 				sc = h_ / (h_ - pt.z);
 				pt.x = pt.x * sc;
