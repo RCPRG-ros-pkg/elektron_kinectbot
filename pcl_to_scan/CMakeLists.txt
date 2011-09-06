@@ -36,4 +36,4 @@ gencfg()
 include_directories (include)
 include_directories (cfg/cpp)
 
-rosbuild_add_library(pcl_to_scan src/cloud_to_scan.cpp src/cloud_throttle.cpp)
+rosbuild_add_library(pcl_to_scan src/cloud_to_scan.cpp src/cloud_throttle.cpp src/hole_detector.cpp)
