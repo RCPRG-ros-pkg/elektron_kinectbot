@@ -47,4 +47,10 @@ filter_limit_max: 10
 filter_limit_negative: False
 </rosparam>
 	</node>
+	
+	<node pkg="nodelet" type="nodelet" name="hole_detector" args="load pcl_to_scan/HoleDetector openni_camera" output="screen">
+		<remap from="~input" to="cloud_transformed" />
+		<remap from="~output" to="cloud_holes" /> 
+	</node>
+	
 </launch>
