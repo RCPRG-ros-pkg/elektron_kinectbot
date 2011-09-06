@@ -68,7 +68,7 @@ private:
 		output->height = msg->height;
 		output->width = msg->width;
 
-		BOOST_FOREACH (const pcl::PointXYZ& pt, msg->points) {
+		BOOST_FOREACH (pcl::PointXYZ& pt, msg->points) {
 			if (pt.z > threshold_)
 				pt.x = pt.y = pt.z = 10.0;
 
