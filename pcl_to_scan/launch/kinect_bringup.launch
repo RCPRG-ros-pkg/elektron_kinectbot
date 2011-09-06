@@ -51,6 +51,7 @@ filter_limit_negative: False
 	<node pkg="nodelet" type="nodelet" name="hole_detector" args="load pcl_to_scan/HoleDetector openni_camera" output="screen">
 		<remap from="input" to="cloud_transformed" />
 		<remap from="output" to="cloud_holes" /> 
+		<param name="threshold" value="-0.03"/>
 	</node>
 	
 </launch>
