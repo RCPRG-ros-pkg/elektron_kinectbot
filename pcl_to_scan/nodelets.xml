@@ -11,4 +11,10 @@
       A nodelet to convert a point cloud to a laser scan.
     </description>
   </class>
+  
+  <class name="pcl_to_scan/HoleDetector" type="pcl_to_scan::HoleDetector" base_class_type="nodelet::Nodelet">
+    <description>
+      Hole detector
+    </description>
+  </class>
 </library>
