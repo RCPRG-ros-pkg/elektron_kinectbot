@@ -90,6 +90,9 @@ void ElektronTeleopKeyboard::keyboardLoop() {
 			perror("read():");
 			exit(-1);
 		}
+		
+		vel_.linear.x = 0;
+		vel_.angular.z = 0;
 
 		switch (c) {
 		// Walking
