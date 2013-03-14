@@ -1,0 +1,5 @@
+<launch>
+	
+	<node pkg="laser_avoid" type="laser_avoid" name="laser_avoid"/>
+
+</launch>
