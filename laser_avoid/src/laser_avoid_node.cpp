@@ -38,7 +38,7 @@ void laserCallback(const sensor_msgs::LaserScanConstPtr& msg)
   if (r > 1)
     r = 1;
 
-  vel.linear.x = 0.1 * (r+l);
+  vel.linear.x = 0.15 * (r+l);
 
   double turnrate = 45;
   double turn = turnrate * (r-l);
@@ -63,7 +63,7 @@ int main(int argc, char** argv)
   ros::Publisher vel_pub = nh.advertise<geometry_msgs::Twist>("cmd_vel", 1);
   ros::Subscriber laser_sub = nh.subscribe("scan", 1, &laserCallback);
 
-  ros::Rate loop_rate(25);
+  ros::Rate loop_rate(50);
 
   vel.linear.x = 0.0;
   vel.angular.z = 0.0;

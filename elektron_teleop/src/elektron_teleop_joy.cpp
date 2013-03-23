@@ -5,6 +5,7 @@
 class ElektronTeleopJoy {
 public:
 	ElektronTeleopJoy();
+	void publish();
 
 private:
 	void joyCallback(const sensor_msgs::Joy::ConstPtr& joy);
@@ -15,6 +16,8 @@ private:
 	double l_scale_, a_scale_;
 	ros::Publisher vel_pub_;
 	ros::Subscriber joy_sub_;
+
+        geometry_msgs::Twist vel;
 
 };
 
@@ -31,16 +34,27 @@ ElektronTeleopJoy::ElektronTeleopJoy() {
 
 }
 
+void ElektronTeleopJoy::publish() {
+        vel_pub_.publish(vel);
+}
+
 void ElektronTeleopJoy::joyCallback(const sensor_msgs::Joy::ConstPtr& joy) {
-	geometry_msgs::Twist vel;
 	vel.angular.z = a_scale_ * joy->axes[angular_];
 	vel.linear.x = l_scale_ * joy->axes[linear_];
-	vel_pub_.publish(vel);
 }
 
 int main(int argc, char** argv) {
 	ros::init(argc, argv, "teleop_turtle");
 	ElektronTeleopJoy elektron_teleop;
 
-	ros::spin();
+	ros::Rate loop_rate(50);
+
+  	while(ros::ok())
+	{
+		elektron_teleop.publish();
+
+		ros::spinOnce();
+		loop_rate.sleep();
+	}
+
 }
